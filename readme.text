@@ -1,31 +1,26 @@
 Monday
-
 [X] move birds from the right to the left
 
 
-
 Tuesday
-
 [X] mouse hovering the birds
-mouse on click eliminate bird
-score
-
-
-
-
 
 
 Wednesday
-move birds  from the left to the right
+[X] mouse on click eliminate bird
+[ ] score
+[ ] timer
 
-
-differents speeds of birds 
-differents size of the birds which needs a higher number of clicks to be eliminated
 
 Thursday
+[ ] differents speeds of birds 
+[ ] differents size of the birds which needs a higher number of clicks to be eliminated
+[ ] implement assets
+[ ] UI/UX design
+[ ] sound effects 
+[ ] music
 
-implement assets
-UI/UX design
-look for sound effects 
-look for music
+Bonus
+[ ] animate the shooting with a smoke effect
+[ ] fix the arrow in the crosshair
 

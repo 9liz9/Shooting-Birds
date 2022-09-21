@@ -3,26 +3,44 @@ class Game {
         this.player = null; 
         this.targets = [];
         this.score = 0;
+        this.started = false;
+        this.attachEventListeners();
     }
     start(){
-        this.attachEventListeners();
-        
-        //create new targets
-        setInterval(() => {
-            const newTarget = new Target();
-            this.targets.push(newTarget);
-        }, 1000);
+        this.starded = true; 
+        if(!this.started){
+            const startButton = document.querySelector(".startBtn"); 
+            startButton.innerText = "SCORE: " + this.score; 
 
-        //move targets
-        setInterval(() => {
-            this.targets.forEach( (targetInstance) => {
-                targetInstance.moveFromLeft(); 
-                this.removeTargetIfOutside(targetInstance); //check if we need to remove the target
-            });
-        }, 60);
-    }
+            //create new targets
+            setInterval(() => {
+                const newTarget = new Target();
+                this.targets.push(newTarget);
+            }, 1000);
     
+            //move targets
+            setInterval(() => {
+                this.targets.forEach( (targetInstance) => {
+                    targetInstance.moveFromLeft(); 
+                    this.removeTargetIfOutside(targetInstance); //check if we need to remove the target
+                });
+            }, 60);
 
+            updateScore(()=> {
+
+            })
+
+            
+            
+            
+
+        }
+
+        
+    }
+
+
+   
     attachEventListeners(){ 
         const cursor = document.querySelector(".cursor");
         document.addEventListener("mousemove",(e) => {
@@ -39,6 +57,10 @@ class Game {
             this.targets.shift(); // remove from the array
         }
     }
+
+
+
+
 }
 
 
@@ -53,6 +75,7 @@ class Target {
 
         this.createDomElement();
     }
+
     createDomElement(){
         // create dom element
         this.domElement = document.createElement('div');
@@ -78,7 +101,14 @@ class Target {
             target.remove(); 
         })
    }
+
+
 }
 
+
 const game = new Game();
-game.start();
+const startButton = document.querySelector(".startBtn"); 
+startButton.addEventListener('click', (e)=>{
+    game.start();
+})
+
