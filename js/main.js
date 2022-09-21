@@ -1,75 +1,46 @@
 class Game {
     constructor(){
-        this.player = null; //will store an instance of the class Player
-        this.targets = []; //will store instances of the class Target
+        this.player = null; 
+        this.targets = [];
         this.score = 0;
     }
     start(){
-        this.player = new Player();
         this.attachEventListeners();
         
-        //create new obstacles
+        //create new targets
         setInterval(() => {
             const newTarget = new Target();
             this.targets.push(newTarget);
         }, 1000);
 
-        //move obstacles
+        //move targets
         setInterval(() => {
             this.targets.forEach( (targetInstance) => {
-                targetInstance.moveDown(); //move
-                this.detectCollision(targetInstance); //detect collision with current obstacle
-                this.removeObstacleIfOutside(targetInstance); //check if we need to remove current obstacle
+                targetInstance.moveFromLeft(); 
+                this.removeTargetIfOutside(targetInstance); //check if we need to remove the target
             });
         }, 60);
-
-
     }
-    attachEventListeners(){ // MODIFY FOR MOUSE CLICKS
+    
+
+    attachEventListeners(){ 
         const cursor = document.querySelector(".cursor");
         document.addEventListener("mousemove",(e) => {
-            console.log(e);
+            //console.log(e);
             cursor.style.top = e.pageY + "px";
             cursor.style.left = e.pageX + "px";
         })
 
     }
 
-    startBtn(){
-        this.startBtn.innerRext = "SCORE: " + this.score;
-    }
-
-    detectClick(targetInstance) {
-        document.body.addEventListener('click',(e)=> {
-            cursor.style.top = e.pageY + "px";
-            cursor.style.left = e.pageX + "px";
-
-            if(e.this.targets === targetInstance) this.score ++;
-        })
-    }
-    detectCollision(targetInstance){
-        if (
-            this.player.positionX < targetInstance.positionX + targetInstance.width &&
-            this.player.positionX + this.player.width > targetInstance.positionX &&
-            this.player.positionY < targetInstance.positionY + targetInstance.height &&
-            this.player.height + this.player.positionY > targetInstance.positionY
-        ) {
-            console.log("game over....")
-            location.href = 'gameover.html';
-        }
-    }
-    removeObstacleIfOutside(targetInstance){
-        if(targetInstance.positionY < 0){
-            targetInstance.domElement.remove(); //remove from the dom
+    removeTargetIfOutside(targetInstance){
+        if(targetInstance.positionX > 190){ // Don't know why 190 instead of 100
+            targetInstance.domElement.remove(); 
             this.targets.shift(); // remove from the array
         }
     }
 }
 
-
-class Player {
-
-}
 
 
 class Target {
@@ -77,7 +48,7 @@ class Target {
         this.width = 5;
         this.height = 5; 
         this.positionX = 10;
-        this.positionY = Math.floor(Math.random() * (100 - this.width + 1)); // random number between 0 and 100-width
+        this.positionY = Math.floor(Math.random() * (100 - this.width + 1)); 
         this.domElement = null;
 
         this.createDomElement();
@@ -87,20 +58,26 @@ class Target {
         this.domElement = document.createElement('div');
 
         // set id and css
-        this.domElement.className = "obstacle";
+        this.domElement.className = "target";
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
         this.domElement.style.bottom = this.positionY + "vh";
         this.domElement.style.left = this.positionX + "vw";
-
+        this.removeTargetIfClick(this.domElement);
         // append to the dom
         const boardElm = document.getElementById("board");
         boardElm.appendChild(this.domElement)
     }
-    moveDown(){
+    moveFromLeft(){
         this.positionX++;
         this.domElement.style.left = this.positionX + "vh";
     }
+
+    removeTargetIfClick(target){
+        target.addEventListener('click', (e)=>{
+            target.remove(); 
+        })
+   }
 }
 
 const game = new Game();

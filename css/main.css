@@ -34,7 +34,7 @@ body {
     position: absolute;
 }
 
-.obstacle {
+.target {
     background-color:rgb(236, 146, 215);
     position: absolute;
 }
