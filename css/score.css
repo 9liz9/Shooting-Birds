@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../images/countryside.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+    height: 100vh;
+    
+}
+
+.container {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 110px 150px;
+    /* height: 300px;
+    width: 600px; */
+    border: 3px solid rgb(240,250,252)  
+}
+
+div > h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 2.7rem;
+    color: rgb(36,128,39);
+}
+
+div > button {
+    background-color: rgb(240,250,252);
+    border: 2px solid rgb(240,250,252); 
+}
+
+div > button > a {
+    
+    font-size: 2rem;
+    color:rgb(241, 72, 208);
+    text-decoration: none;
+}
+
+ .score {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 2rem;
+    color: rgb(124,173,39)
+    /* border: 2px solid #fff; 
+    background: transparent;
+    padding: 15px 45px;
+    font-size: 1.1rem;
+    margin-top:3em;
+    outline: none; */
+    
+}  

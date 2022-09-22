@@ -8,19 +8,27 @@ Tuesday
 
 Wednesday
 [X] mouse on click eliminate bird
-[ ] score
-[ ] timer
+[X] start button
+[X] score
+
 
 
 Thursday
-[ ] differents speeds of birds 
-[ ] differents size of the birds which needs a higher number of clicks to be eliminated
+[X] timer
+[X] show timer
 [ ] implement assets
-[ ] UI/UX design
+[X] game over / Score page
+
+Bonus
 [ ] sound effects 
 [ ] music
 
-Bonus
+Super Bonus
+[ ] differents speeds of birds 
+[ ] differents size of the birds which needs a higher number of clicks to be eliminated
+[ ] UI/UX design
 [ ] animate the shooting with a smoke effect
-[ ] fix the arrow in the crosshair
+[ ] Adding munitions 
+[ ] specific amount of birds to kill
+
 

@@ -13,6 +13,7 @@ body {
 }
 
 button {
+    font-family: 'Luckiest Guy', cursive;
     color:rgb(241, 72, 208);
     border: 2px solid #fff; 
     background: transparent;
@@ -22,8 +23,18 @@ button {
     outline: none;
     cursor: none;
 
-    
+}
 
+.display-countdown {
+    font-family: 'Luckiest Guy', cursive;
+    color: rgb(241, 72, 208);
+    border: 2px solid #fff; 
+    background: transparent;
+    padding: 15px 45px;
+    font-size: 1.1rem;
+    margin-top:3em;
+    outline: none;
+    cursor: none;
 }
 
 .cursor {
@@ -40,20 +51,12 @@ button {
     position: relative;
     height: 100%;
     overflow: hidden;
-    
-    /* height: 100vh;
-    background-color: rgb(141, 204, 231);
-    position: relative;  */
 } 
 
 
-
-#player{
-    background-color: rgb(241, 72, 208);
-    position: absolute;
-}
 
 .target {
     background-color:rgb(236, 146, 215);
     position: absolute;
 }
+

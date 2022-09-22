@@ -5,17 +5,31 @@ class Game {
         this.score = 0;
         this.started = false;
         this.attachEventListeners();
+        this.countdown = 10;
+        this.displayCountdown = document.querySelector("span");
     }
     start(){
+        this.displayCountdown.classList.add("display-countdown");
+
         this.starded = true; 
         if(!this.started){
-            const startButton = document.querySelector(".startBtn"); 
-            startButton.innerText = "SCORE: " + this.score; 
 
+            //  const startButton = document.querySelector(".startBtn"); 
+            //  startButton.innerText = "SCORE: " + this.score; 
+            
             //create new targets
             setInterval(() => {
                 const newTarget = new Target();
                 this.targets.push(newTarget);
+                this.countdown--;
+                this.displayCountdown.innerText = this.countdown;
+                if(this.countdown <= 0){
+                    location.href = 'score.html';
+                    // const displayScore = document.querySelector(".score");
+                    // displayScore.innerText = this.printScore();
+                    localStorage.setItem('score', this.score)
+                    
+                }
             }, 1000);
     
             //move targets
@@ -24,21 +38,13 @@ class Game {
                     targetInstance.moveFromLeft(); 
                     this.removeTargetIfOutside(targetInstance); //check if we need to remove the target
                 });
-            }, 60);
-
-            updateScore(()=> {
-
-            })
-
-            
-            
+            }, 60);    
             
 
         }
 
         
     }
-
 
    
     attachEventListeners(){ 
@@ -58,11 +64,17 @@ class Game {
         }
     }
 
+    printScore() {
+       return this.score;
+      }
+
 
 
 
 }
 
+const game = new Game();
+console.log(game);
 
 
 class Target {
@@ -99,16 +111,18 @@ class Target {
     removeTargetIfClick(target){
         target.addEventListener('click', (e)=>{
             target.remove(); 
+            game.score = game.score + 10;
+            //console.log(game.score);
+            document.querySelector(".startBtn").innerText = "SCORE: " + game.score;
         })
    }
-
-
 }
 
 
-const game = new Game();
+
 const startButton = document.querySelector(".startBtn"); 
 startButton.addEventListener('click', (e)=>{
     game.start();
-})
+}, { once: true})
+
 
