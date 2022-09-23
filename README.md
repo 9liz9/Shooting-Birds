@@ -8,8 +8,7 @@ Move the haircross with your mouse and click on the birds to get as much points 
 
 # Demo
 
-
-
+[click to play] (https://9liz9.github.io/Shooting-Birds/)
 
 # Further Improvements
 
