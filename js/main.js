@@ -5,7 +5,7 @@ class Game {
         this.score = 0;
         this.started = false;
         this.attachEventListeners();
-        this.countdown = 15;
+        this.countdown = 10;
         this.displayCountdown = document.querySelector("span");
     
     }
@@ -61,11 +61,6 @@ class Game {
         }
     }
 
-    printScore() {
-       return this.score;
-      }
-
-
 
 
 }
@@ -90,7 +85,7 @@ class Target {
 
         // set id and css
         this.domElement.setAttribute('class', 'target');
-        this.domElement.setAttribute('src','../images/bird.png');
+        this.domElement.setAttribute('src','./images/bird.png');
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
         this.domElement.style.bottom = this.positionY + "vh";

@@ -4,7 +4,7 @@ OOP game built with web technologies (html, css, javascript)
 
 # How to play
 
-Move the haircross with your mouse and click on the birds to get as much points as you can before the end of the countdown timer.
+Move the crosshair with your mouse and click on the birds to get as much points as you can before the end of the countdown timer.
 
 # Demo
 
