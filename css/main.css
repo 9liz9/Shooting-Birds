@@ -56,7 +56,7 @@ button {
 
 
 .target {
-    background-color:rgb(236, 146, 215);
+    background-color: none;
     position: absolute;
 }
 

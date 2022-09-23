@@ -5,8 +5,9 @@ class Game {
         this.score = 0;
         this.started = false;
         this.attachEventListeners();
-        this.countdown = 10;
+        this.countdown = 15;
         this.displayCountdown = document.querySelector("span");
+    
     }
     start(){
         this.displayCountdown.classList.add("display-countdown");
@@ -14,8 +15,6 @@ class Game {
         this.starded = true; 
         if(!this.started){
 
-            //  const startButton = document.querySelector(".startBtn"); 
-            //  startButton.innerText = "SCORE: " + this.score; 
             
             //create new targets
             setInterval(() => {
@@ -25,8 +24,6 @@ class Game {
                 this.displayCountdown.innerText = this.countdown;
                 if(this.countdown <= 0){
                     location.href = 'score.html';
-                    // const displayScore = document.querySelector(".score");
-                    // displayScore.innerText = this.printScore();
                     localStorage.setItem('score', this.score)
                     
                 }
@@ -58,7 +55,7 @@ class Game {
     }
 
     removeTargetIfOutside(targetInstance){
-        if(targetInstance.positionX > 190){ // Don't know why 190 instead of 100
+        if(targetInstance.positionX > 190){ 
             targetInstance.domElement.remove(); 
             this.targets.shift(); // remove from the array
         }
@@ -74,13 +71,12 @@ class Game {
 }
 
 const game = new Game();
-console.log(game);
 
 
 class Target {
     constructor(){
-        this.width = 5;
-        this.height = 5; 
+        this.width = 10;
+        this.height = 10; 
         this.positionX = 10;
         this.positionY = Math.floor(Math.random() * (100 - this.width + 1)); 
         this.domElement = null;
@@ -90,10 +86,11 @@ class Target {
 
     createDomElement(){
         // create dom element
-        this.domElement = document.createElement('div');
+        this.domElement = document.createElement('img');
 
         // set id and css
-        this.domElement.className = "target";
+        this.domElement.setAttribute('class', 'target');
+        this.domElement.setAttribute('src','../images/bird.png');
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
         this.domElement.style.bottom = this.positionY + "vh";
@@ -112,7 +109,6 @@ class Target {
         target.addEventListener('click', (e)=>{
             target.remove(); 
             game.score = game.score + 10;
-            //console.log(game.score);
             document.querySelector(".startBtn").innerText = "SCORE: " + game.score;
         })
    }
@@ -123,6 +119,9 @@ class Target {
 const startButton = document.querySelector(".startBtn"); 
 startButton.addEventListener('click', (e)=>{
     game.start();
+
 }, { once: true})
+
+
 
 
